@@ -1,3 +1,25 @@
 {
-  "extends": "@react-native/typescript-config/tsconfig.json"
+  "extends": "@react-native/typescript-config/tsconfig.json",
+  "compilerOptions": {
+    "jsx": "react",
+    "baseUrl": "./src" /* Base directory to resolve non-absolute module names. */,
+    "paths": {
+			"app/*": ["app/*"],
+			"assets": ["assets"],
+			"assets/*": ["assets/*"],
+			"core/*": ["core/*"],
+			"modules/*": ["modules/*"],
+			"theme": ["theme"],
+			"theme/*": ["theme/*"],
+			"navigation": ["navigation"],
+			"navigation/*": ["navigation/*"]
+		},
+    "types": ["jest"],
+    "typeRoots": [
+			"./src/typings",
+			"./node_modules/@types"
+		] /* List of folders to include type definitions from. */,
+    /* Completeness */
+    "skipLibCheck": true                                 /* Skip type checking all .d.ts files. */
+  }
 }
