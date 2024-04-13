@@ -8,12 +8,23 @@
 
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* pokemongoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* pokemongoTests.m */; };
+		01BFDD3E17794E99AB7F7020 /* Lato-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 524042462AC04B8EAD1D260E /* Lato-Black.ttf */; };
 		0C80B921A6F3F58F76C31292 /* libPods-pokemongo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCACB8F33CDC322A6C60F78 /* libPods-pokemongo.a */; };
+		0E97D1A4ABA942958C68CEF5 /* OFL.txt in Resources */ = {isa = PBXBuildFile; fileRef = A12C5584AAEE4EE59D6ECC10 /* OFL.txt */; };
+		10BA71F1F37E4049A2BEF03B /* Lato-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2DAFE5F149CF416F99B7B8B7 /* Lato-BlackItalic.ttf */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		3A1C9F6471D8415E903DBEAF /* Lato-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 41F841B5367444C3AB579BB6 /* Lato-Light.ttf */; };
 		7699B88040F8A987B510C191 /* libPods-pokemongo-pokemongoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-pokemongo-pokemongoTests.a */; };
+		7DDF22A1457A42A38939DE7C /* Lato-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1166B0A468F8409DA42CA7E2 /* Lato-BoldItalic.ttf */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		8DAFEAA561EC4261BC1C7A60 /* Lato-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D413C7148C2A4BB48E8E7736 /* Lato-LightItalic.ttf */; };
+		9BFC89FD94264031B163D1A3 /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E688FB4AC53C485A8F6A4DB2 /* Lato-Bold.ttf */; };
+		9D68AE90802647D08D2CD3CA /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0AAB892C7ED347C49BDDDA27 /* Lato-Regular.ttf */; };
+		AA06CBF8B16744C5857AF69A /* Lato-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1BC22CD9EDF4425993769619 /* Lato-Italic.ttf */; };
+		C2E353A61F7D4800948D57AB /* Lato-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4BD84507FC2A4E95AEEF3767 /* Lato-Thin.ttf */; };
+		F6F76E70DC484D8BBCEE448F /* Lato-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8E3EBD733A7F4156A02931A9 /* Lato-ThinItalic.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,6 +41,8 @@
 		00E356EE1AD99517003FC87E /* pokemongoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = pokemongoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* pokemongoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = pokemongoTests.m; sourceTree = "<group>"; };
+		0AAB892C7ED347C49BDDDA27 /* Lato-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Lato-Regular.ttf"; path = "../src/assets/font/Lato-Regular.ttf"; sourceTree = "<group>"; };
+		1166B0A468F8409DA42CA7E2 /* Lato-BoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Lato-BoldItalic.ttf"; path = "../src/assets/font/Lato-BoldItalic.ttf"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* pokemongo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pokemongo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = pokemongo/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = pokemongo/AppDelegate.mm; sourceTree = "<group>"; };
@@ -37,12 +50,21 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = pokemongo/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = pokemongo/main.m; sourceTree = "<group>"; };
 		19F6CBCC0A4E27FBF8BF4A61 /* libPods-pokemongo-pokemongoTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-pokemongo-pokemongoTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1BC22CD9EDF4425993769619 /* Lato-Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Lato-Italic.ttf"; path = "../src/assets/font/Lato-Italic.ttf"; sourceTree = "<group>"; };
+		2DAFE5F149CF416F99B7B8B7 /* Lato-BlackItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Lato-BlackItalic.ttf"; path = "../src/assets/font/Lato-BlackItalic.ttf"; sourceTree = "<group>"; };
 		3B4392A12AC88292D35C810B /* Pods-pokemongo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pokemongo.debug.xcconfig"; path = "Target Support Files/Pods-pokemongo/Pods-pokemongo.debug.xcconfig"; sourceTree = "<group>"; };
+		41F841B5367444C3AB579BB6 /* Lato-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Lato-Light.ttf"; path = "../src/assets/font/Lato-Light.ttf"; sourceTree = "<group>"; };
+		4BD84507FC2A4E95AEEF3767 /* Lato-Thin.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Lato-Thin.ttf"; path = "../src/assets/font/Lato-Thin.ttf"; sourceTree = "<group>"; };
+		524042462AC04B8EAD1D260E /* Lato-Black.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Lato-Black.ttf"; path = "../src/assets/font/Lato-Black.ttf"; sourceTree = "<group>"; };
 		5709B34CF0A7D63546082F79 /* Pods-pokemongo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pokemongo.release.xcconfig"; path = "Target Support Files/Pods-pokemongo/Pods-pokemongo.release.xcconfig"; sourceTree = "<group>"; };
 		5B7EB9410499542E8C5724F5 /* Pods-pokemongo-pokemongoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pokemongo-pokemongoTests.debug.xcconfig"; path = "Target Support Files/Pods-pokemongo-pokemongoTests/Pods-pokemongo-pokemongoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5DCACB8F33CDC322A6C60F78 /* libPods-pokemongo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-pokemongo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = pokemongo/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-pokemongo-pokemongoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pokemongo-pokemongoTests.release.xcconfig"; path = "Target Support Files/Pods-pokemongo-pokemongoTests/Pods-pokemongo-pokemongoTests.release.xcconfig"; sourceTree = "<group>"; };
+		8E3EBD733A7F4156A02931A9 /* Lato-ThinItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Lato-ThinItalic.ttf"; path = "../src/assets/font/Lato-ThinItalic.ttf"; sourceTree = "<group>"; };
+		A12C5584AAEE4EE59D6ECC10 /* OFL.txt */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = OFL.txt; path = ../src/assets/font/OFL.txt; sourceTree = "<group>"; };
+		D413C7148C2A4BB48E8E7736 /* Lato-LightItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Lato-LightItalic.ttf"; path = "../src/assets/font/Lato-LightItalic.ttf"; sourceTree = "<group>"; };
+		E688FB4AC53C485A8F6A4DB2 /* Lato-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Lato-Bold.ttf"; path = "../src/assets/font/Lato-Bold.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -106,6 +128,25 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		4F710BB54C42438FA13FD036 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				524042462AC04B8EAD1D260E /* Lato-Black.ttf */,
+				2DAFE5F149CF416F99B7B8B7 /* Lato-BlackItalic.ttf */,
+				E688FB4AC53C485A8F6A4DB2 /* Lato-Bold.ttf */,
+				1166B0A468F8409DA42CA7E2 /* Lato-BoldItalic.ttf */,
+				1BC22CD9EDF4425993769619 /* Lato-Italic.ttf */,
+				41F841B5367444C3AB579BB6 /* Lato-Light.ttf */,
+				D413C7148C2A4BB48E8E7736 /* Lato-LightItalic.ttf */,
+				0AAB892C7ED347C49BDDDA27 /* Lato-Regular.ttf */,
+				4BD84507FC2A4E95AEEF3767 /* Lato-Thin.ttf */,
+				8E3EBD733A7F4156A02931A9 /* Lato-ThinItalic.ttf */,
+				A12C5584AAEE4EE59D6ECC10 /* OFL.txt */,
+			);
+			name = Resources;
+			path = "";
+			sourceTree = "<group>";
+		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
@@ -122,6 +163,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				BBD78D7AC51CEA395F1C20DB /* Pods */,
+				4F710BB54C42438FA13FD036 /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -243,6 +285,17 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				01BFDD3E17794E99AB7F7020 /* Lato-Black.ttf in Resources */,
+				10BA71F1F37E4049A2BEF03B /* Lato-BlackItalic.ttf in Resources */,
+				9BFC89FD94264031B163D1A3 /* Lato-Bold.ttf in Resources */,
+				7DDF22A1457A42A38939DE7C /* Lato-BoldItalic.ttf in Resources */,
+				AA06CBF8B16744C5857AF69A /* Lato-Italic.ttf in Resources */,
+				3A1C9F6471D8415E903DBEAF /* Lato-Light.ttf in Resources */,
+				8DAFEAA561EC4261BC1C7A60 /* Lato-LightItalic.ttf in Resources */,
+				9D68AE90802647D08D2CD3CA /* Lato-Regular.ttf in Resources */,
+				C2E353A61F7D4800948D57AB /* Lato-Thin.ttf in Resources */,
+				F6F76E70DC484D8BBCEE448F /* Lato-ThinItalic.ttf in Resources */,
+				0E97D1A4ABA942958C68CEF5 /* OFL.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
