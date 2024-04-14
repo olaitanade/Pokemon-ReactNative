@@ -1,5 +1,5 @@
 import {View} from 'react-native';
-import React, {useCallback, useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import {useDarkStatusBar} from 'core/hooks';
 
 import Activity from 'components/activity';
@@ -8,10 +8,9 @@ import bootloader from 'core/bootloader';
 import theme from 'theme';
 import {useStore} from 'core/state/store';
 import screen from 'core/util/screen';
-import assets from 'assets';
 import PokemonLogo from 'assets/svg/pokemon_logo.svg';
 import {Pokeball} from 'components/pokemon/Pokeball';
-import {getImageColors} from 'core/util/color';
+import {sleep} from 'core/util/utils';
 
 const Bootloader = () => {
   useDarkStatusBar();
@@ -20,14 +19,13 @@ const Bootloader = () => {
 
   useEffect(() => {
     RNBootSplash.hide({fade: true});
-    bootloader.boot(dispatch);
+    sleep(2500).then(() => bootloader.boot(dispatch));
   }, [dispatch]);
 
   return (
     <View
       className={'bg-[#316AB2] flex-1 items-center justify-center relative'}>
       <PokemonLogo width={screen.safeWidth} height={screen.getSizeScale(50)} />
-      {/* <Pikachu width={screen.safeWidth} height={screen.getSizeScale(50)} /> */}
       <View
         // eslint-disable-next-line react-native/no-inline-styles
         style={{
