@@ -1,10 +1,52 @@
 /** @type {import('tailwindcss').Config} */
 const colors = require('./src/theme/data/colors.json');
 
+const spacing = {
+  0: '0',
+  1: '1px',
+  2: '2px',
+  4: '4px',
+  6: '6px',
+  8: '8px',
+  9: '9px',
+  10: '10px',
+  12: '12px',
+  14: '14px',
+  16: '16px',
+  18: '18px',
+  20: '20px',
+  24: '24px',
+  28: '28px',
+  32: '32px',
+  36: '36px',
+  40: '40px',
+  44: '44px',
+  48: '48px',
+  50: '50px',
+  54: '54px',
+  56: '56px',
+  60: '60px',
+  64: '64px',
+  80: '80px',
+  90: '90px',
+  95: '95px',
+  100: '100px',
+  108: '108px',
+  120: '120px',
+  144: '144px',
+  150: '150px',
+  160: '160px',
+  180: '180px',
+  200: '200px',
+  240: '240px',
+  272: '272px',
+};
+
 module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   theme: {
     colors,
+    spacing,
     extend: {},
   },
   variants: {
