@@ -5,14 +5,13 @@
     "baseUrl": "./src" /* Base directory to resolve non-absolute module names. */,
     "paths": {
 			"app/*": ["app/*"],
-			"assets": ["assets"],
+      "components/*": ["components/*"],
 			"assets/*": ["assets/*"],
 			"core/*": ["core/*"],
 			"modules/*": ["modules/*"],
 			"theme": ["theme"],
 			"theme/*": ["theme/*"],
-			"navigation": ["navigation"],
-			"navigation/*": ["navigation/*"]
+			"router/*": ["router/*"]
 		},
     "types": ["jest"],
     "typeRoots": [
