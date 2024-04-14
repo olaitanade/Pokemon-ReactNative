@@ -1,38 +1,38 @@
+import {FlashList} from '@shopify/flash-list';
+import Activity from 'components/activity';
+import {usePokemons} from 'core/data/hooks/usepokemons';
 import React, {useEffect} from 'react';
 import {Image, StyleSheet, Text, View} from 'react-native';
-import {FlatList} from 'react-native-gesture-handler';
 import {SafeAreaView} from 'react-native-safe-area-context';
-
-import SplashScreen from 'react-native-splash-screen';
-
-import {usePokemons} from '../hooks/usePokemons';
-import {PokedexItem} from '../components/PokedexItem';
-import {Pokeball} from '../components/Pokeball';
-import {Spinner} from '../components/Spinner';
-
-import {colors} from '../theme/colors';
+import Pikachu from 'assets/svg/pikachu.svg';
 
 export const Pokemons = () => {
-  const {pokemons, getPokemons, status} = usePokemons();
+  const {
+    data,
+    error,
+    fetchNextPage,
+    hasNextPage,
+    isFetching,
+    isFetchingNextPage,
+    status,
+  } = usePokemons();
 
-  useEffect(() => {
-    SplashScreen.hide();
-  }, []);
-
-  if (status === 'loading' && pokemons.length === 0) {
-    return <Spinner />;
+  if (status === 'pending') {
+    return (
+      <View
+        className={'bg-[#316AB2] flex-1 items-center justify-center relative'}>
+        <Activity />
+      </View>
+    );
   }
 
-  if (status === 'error' || (status === 'success' && pokemons.length === 0)) {
+  if (status === 'error') {
     return (
       <View style={styles.withoutResults}>
         <Text style={styles.withoutResultText}>
           At this time there are no pokemons available.
         </Text>
-        <Image
-          style={styles.withoutResultImg}
-          source={require('../assets/pokeball-white.png')}
-        />
+        <Pikachu width={200} height={200} style={styles.withoutResultImg} />
       </View>
     );
   }
@@ -40,23 +40,21 @@ export const Pokemons = () => {
   return (
     <SafeAreaView>
       <View>
-        <FlatList
-          data={pokemons}
+        <FlashList
+          data={data?.pages.map(page => page.data.results).flat() || []}
+          estimatedItemSize={50}
           keyExtractor={pokemon => pokemon.id}
           renderItem={({item}) => <PokedexItem item={item} />}
           showsVerticalScrollIndicator={false}
-          onEndReached={getPokemons}
+          onEndReached={() => {
+            if (hasNextPage && !isFetching && !isFetchingNextPage) {
+              fetchNextPage();
+            }
+          }}
           onEndReachedThreshold={0.4}
-          ListFooterComponent={<Spinner />}
-          columnWrapperStyle={{justifyContent: 'space-evenly'}}
+          ListFooterComponent={<Activity />}
           removeClippedSubviews
           numColumns={2}
-          ListHeaderComponent={
-            <View style={styles.titleContainer}>
-              <Pokeball size={180} position={-50} />
-              <Text style={styles.title}>Pokédex</Text>
-            </View>
-          }
         />
       </View>
     </SafeAreaView>
@@ -64,13 +62,6 @@ export const Pokemons = () => {
 };
 
 const styles = StyleSheet.create({
-  titleContainer: {
-    backgroundColor: colors.red,
-    height: 80,
-    display: 'flex',
-    justifyContent: 'center',
-    marginBottom: 20,
-  },
   title: {
     fontSize: 35,
     fontWeight: 'bold',
@@ -81,7 +72,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: colors.red,
+    backgroundColor: 'red',
   },
   withoutResultText: {
     fontSize: 25,
