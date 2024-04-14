@@ -5,6 +5,9 @@ import React, {useEffect} from 'react';
 import {Image, StyleSheet, Text, View} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import Pikachu from 'assets/svg/pikachu.svg';
+import LeftArrow from 'assets/svg/left-arrow.svg';
+import {PokemonItemCard} from 'components/pokemon/itemcard';
+import {Pokeball} from 'components/pokemon/Pokeball';
 
 export const Pokemons = () => {
   const {
@@ -38,20 +41,39 @@ export const Pokemons = () => {
   }
 
   return (
-    <SafeAreaView>
-      <View>
+    <SafeAreaView className=" flex-1 bg-gray-200">
+      <View className=" flex-1">
+        <View className="flex-row justify-between items-center h-60 bg-[#316AB2]">
+          <Text style={styles.title}>Pokemons</Text>
+          <Pokeball size={150} position={-50} />
+        </View>
+        <View className=' my-10'>
+
+        </View>
         <FlashList
-          data={data?.pages.map(page => page.data.results).flat() || []}
-          estimatedItemSize={50}
+          data={
+            data?.pages
+              .map(page =>
+                page.data.results.map(({name, url}) => {
+                  const urlSplit = url.split('/');
+                  const id = urlSplit[urlSplit.length - 2];
+                  const picture = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`;
+
+                  return {id, picture, name};
+                }),
+              )
+              .flat() || []
+          }
+          estimatedItemSize={600}
           keyExtractor={pokemon => pokemon.id}
-          renderItem={({item}) => <PokedexItem item={item} />}
+          renderItem={({item}) => <PokemonItemCard item={item} />}
           showsVerticalScrollIndicator={false}
           onEndReached={() => {
             if (hasNextPage && !isFetching && !isFetchingNextPage) {
               fetchNextPage();
             }
           }}
-          onEndReachedThreshold={0.4}
+          onEndReachedThreshold={0.5}
           ListFooterComponent={<Activity />}
           removeClippedSubviews
           numColumns={2}

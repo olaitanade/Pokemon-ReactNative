@@ -1,25 +1,18 @@
-import React, {
-  ReactElement,
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-} from 'react';
+import React, {ReactElement, useCallback, useEffect, useRef} from 'react';
 import {DefaultTheme, NavigationContainer} from '@react-navigation/native';
 import {ScreenReplaceTypes} from 'react-native-screens';
 import navigation from 'router';
 import routes from 'router/routes';
 import bootloader from 'core/bootloader';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {CommonActions} from '@react-navigation/native';
 import Bootloader from 'modules/bootloader';
 import {useStore} from 'core/state/store';
 import Walkthrough from 'modules/walkthrough';
+import {Pokemons} from 'modules/pokemons';
 
 const BootloaderStackFactory = createNativeStackNavigator();
 const WalkThroughStackFactory = createNativeStackNavigator();
 const AppContainerStackFactory = createNativeStackNavigator();
-const PokemonDetailStackFactory = createNativeStackNavigator();
 const ContainerStackFactory = createNativeStackNavigator();
 
 const BootloaderStack = () => {
@@ -63,7 +56,8 @@ const AppStack = () => {
   );
   return (
     <AppContainerStackFactory.Navigator>
-      {createRoute(routes.bootloader, Bootloader)}
+      {createRoute(routes.pokemons, Pokemons)}
+      {createRoute(routes.pokemondetail, Bootloader)}
     </AppContainerStackFactory.Navigator>
   );
 };
