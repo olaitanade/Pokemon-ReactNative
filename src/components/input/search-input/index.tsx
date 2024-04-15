@@ -22,7 +22,7 @@ const SearchInput: FC<SearchInputProps> = ({
   return (
     <View
       className={classNames(
-        'items-center rounded-lg py-6 bg-gray-300 px-12',
+        'm-20 items-center flex-row rounded-md border border-gray-500 py-10 px-10 bg-white',
         className,
       )}
       style={[style]}>

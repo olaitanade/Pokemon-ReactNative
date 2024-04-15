@@ -9,6 +9,7 @@ import Bootloader from 'modules/bootloader';
 import {useStore} from 'core/state/store';
 import Walkthrough from 'modules/walkthrough';
 import {Pokemons} from 'modules/pokemons';
+import { SearchPokemon } from 'modules/searchpokemon';
 
 const BootloaderStackFactory = createNativeStackNavigator();
 const WalkThroughStackFactory = createNativeStackNavigator();
@@ -57,6 +58,7 @@ const AppStack = () => {
   return (
     <AppContainerStackFactory.Navigator>
       {createRoute(routes.pokemons, Pokemons)}
+      {createRoute(routes.searchpokemon, SearchPokemon)}
       {createRoute(routes.pokemondetail, Bootloader)}
     </AppContainerStackFactory.Navigator>
   );

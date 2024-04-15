@@ -1,7 +1,7 @@
 import {FlashList} from '@shopify/flash-list';
 import Activity from 'components/activity';
 import {usePokemons} from 'core/data/hooks/usepokemons';
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Image, StyleSheet, Text, View} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import Pikachu from 'assets/svg/pikachu.svg';
@@ -10,11 +10,14 @@ import {PokemonItemCard} from 'components/pokemon/itemcard';
 import {Pokeball} from 'components/pokemon/Pokeball';
 import Search from 'assets/svg/search.svg';
 import TouchableInput from 'components/input/touchable-input';
+import GhostButton from 'components/button/ghost';
+import SearchInput from 'components/input/search-input';
 import {useNavigation} from '@react-navigation/native';
-import routes from 'router/routes';
+import {useDebounce} from 'core/util/utils';
 
-export const Pokemons = () => {
-  const {navigate} = useNavigation();
+export const SearchPokemon = () => {
+  const {goBack} = useNavigation();
+  const [query, setQuery] = useState('');
   const {
     data,
     error,
@@ -24,6 +27,10 @@ export const Pokemons = () => {
     isFetchingNextPage,
     status,
   } = usePokemons();
+
+  const handleSearch = (text: string) => {
+    setQuery(text);
+  };
 
   if (status === 'pending') {
     return (
@@ -48,18 +55,17 @@ export const Pokemons = () => {
   return (
     <SafeAreaView className=" flex-1 bg-gray-200">
       <View className=" flex-1">
-        <View className="flex-row justify-between items-center h-60 bg-[#316AB2]">
-          <Text style={styles.title}>Pokemons</Text>
-          <Pokeball size={150} position={-50} />
-        </View>
-        <View className="flex-row">
-          <TouchableInput
-            onPress={() => {
-              navigate(routes.searchpokemon);
-            }}
-            placeholder="Search"
-            leftAccessory={<Search width={20} height={20} />}
+        <View className="flex-row items-center mb-12">
+          <GhostButton onPress={goBack} className="p-10 ml-4">
+            <LeftArrow width={30} height={30} />
+          </GhostButton>
+
+          <SearchInput
+            value={query}
+            onChangeText={handleSearch}
+            className="flex-1"
           />
+          <Pokeball size={150} position={-50} />
         </View>
 
         <FlashList
@@ -74,19 +80,25 @@ export const Pokemons = () => {
                   return {id, picture, name};
                 }),
               )
-              .flat() || []
+              .flat()
+              .filter((item: PokemonCustom) => {
+                if (query) {
+                  return item.name.toLowerCase().includes(query.toLowerCase());
+                }
+                return item;
+              }) || []
           }
           estimatedItemSize={600}
           keyExtractor={pokemon => pokemon.id}
           renderItem={({item}) => <PokemonItemCard item={item} />}
           showsVerticalScrollIndicator={false}
           onEndReached={() => {
-            if (hasNextPage && !isFetching && !isFetchingNextPage) {
+            if (hasNextPage && !isFetchingNextPage) {
               fetchNextPage();
             }
           }}
-          onEndReachedThreshold={0.5}
-          ListFooterComponent={<Activity />}
+          onEndReachedThreshold={0.1}
+          ListFooterComponent={isFetching ? <Activity /> : null}
           removeClippedSubviews
           numColumns={2}
         />

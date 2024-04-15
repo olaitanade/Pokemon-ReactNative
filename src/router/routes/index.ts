@@ -17,6 +17,7 @@ const routes = {
   // APP
   // ------------------------------------------------------------------------
   pokemons: 'pokemons',
+  searchpokemon: 'searchpokemon',
   pokemon: 'pokemon',
   pokemondetail: 'pokemondetail',
   settings: 'settings',

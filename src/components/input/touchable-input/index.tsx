@@ -9,7 +9,6 @@ import textStyles from 'theme/text-styles';
 type TouchableInputProps = {
   disabled?: boolean;
   leftAccessory?: ReactElement;
-  rightAccessory?: ReactElement;
   placeholder?: string;
   className?: string;
   style?: StyleProp<ViewStyle>;
@@ -19,7 +18,6 @@ type TouchableInputProps = {
 const TouchableInput: FC<TouchableInputProps> = ({
   disabled,
   leftAccessory,
-  rightAccessory,
   placeholder,
   style,
   className,
@@ -27,7 +25,10 @@ const TouchableInput: FC<TouchableInputProps> = ({
 }) => {
   return (
     <GhostButton
-      className={classNames('w-full bg-white', className)}
+      className={classNames(
+        'm-20 flex-1 flex-row rounded-md border border-gray-500 py-10 px-10',
+        className,
+      )}
       style={style}
       disabled={disabled}
       onPress={onPress}>
@@ -35,8 +36,7 @@ const TouchableInput: FC<TouchableInputProps> = ({
         className="flex-row items-center"
         style={[textStyles.touchableinput]}>
         {leftAccessory}
-        <Body className={'flex-1 text-black'}>{placeholder}</Body>
-        {rightAccessory}
+        <Body className={'flex-1 text-black ml-10'}>{placeholder}</Body>
       </View>
     </GhostButton>
   );
