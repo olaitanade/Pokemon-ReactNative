@@ -82,6 +82,19 @@ export function getByPlatform<T>({ios, android}: {ios?: T; android?: T}): T {
   return Platform.select({ios, android})!;
 }
 
+export const mapToAbout = (pokemon: Pokemon, species: Species): About => {
+  return {
+    abilities: pokemon.abilities,
+    weight: pokemon.weight,
+    height: pokemon.height,
+    egg_groups: species.egg_groups,
+    habitat: species.habitat,
+    flavorText: species.flavor_text_entries
+      .filter(t => t.language.name === 'en')[0]
+      ?.flavor_text.replace(/(\r\n|\n|\r)/gm, ' '),
+  };
+};
+
 export default {
   exponentialBackoff,
   sleep,

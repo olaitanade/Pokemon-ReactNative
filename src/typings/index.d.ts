@@ -7,3 +7,5 @@ type AsyncFn<T = any> = (...args: any[]) => Promise<T>;
 type TextWeightProps = {
   weight?: FontWeightTypes;
 };
+
+type RequestStatus = 'success' | 'error' | 'loading' | 'idle';

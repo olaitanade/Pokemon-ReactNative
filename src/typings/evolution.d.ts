@@ -32,7 +32,18 @@ type EvolutionDetail = {
   turn_upside_down: boolean;
 };
 
-type Species = {
+type SpeciesOption = {
   name: string;
+  evolution_chain: EvolutionChain;
   url: string;
+};
+
+type EvolutionChain = {
+  url: string;
+}
+
+type EvolutionProps = {
+  name: string;
+  level?: string;
+  picture: string | null;
 };
