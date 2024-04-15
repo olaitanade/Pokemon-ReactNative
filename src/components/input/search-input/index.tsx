@@ -1,14 +1,14 @@
-import React, {FC} from 'react';
+import React, {FC, useEffect, useState} from 'react';
 import {StyleProp, View, ViewStyle} from 'react-native';
 import classNames from 'classnames';
 import Input from '..';
 import Search from 'assets/svg/search.svg';
+import {useDebounce} from 'core/util/utils';
 
 type SearchInputProps = {
   placeholder?: string;
-  value?: string;
   className?: string;
-  onChangeText?: (text: string) => void;
+  onDebounceText?: (text: string) => void;
   style?: StyleProp<ViewStyle>;
 };
 
@@ -16,9 +16,16 @@ const SearchInput: FC<SearchInputProps> = ({
   placeholder,
   style,
   className,
-  value,
-  onChangeText,
+  onDebounceText,
 }) => {
+  const [query, setQuery] = useState('');
+  const {debounce} = useDebounce();
+
+  useEffect(() => {
+    debounce(() => {
+      onDebounceText?.(query);
+    });
+  }, [debounce, onDebounceText, query]);
   return (
     <View
       className={classNames(
@@ -28,8 +35,8 @@ const SearchInput: FC<SearchInputProps> = ({
       style={[style]}>
       <Search width={20} height={20} />
       <Input
-        value={value}
-        onChangeText={onChangeText}
+        value={query}
+        onChangeText={setQuery}
         placeholder={placeholder}
         className={classNames('flex-1')}
       />

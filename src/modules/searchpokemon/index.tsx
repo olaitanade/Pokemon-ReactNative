@@ -1,19 +1,16 @@
 import {FlashList} from '@shopify/flash-list';
 import Activity from 'components/activity';
 import {usePokemons} from 'core/data/hooks/usepokemons';
-import React, {useEffect, useState} from 'react';
-import {Image, StyleSheet, Text, View} from 'react-native';
+import React, {useState} from 'react';
+import {StyleSheet, Text, View} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import Pikachu from 'assets/svg/pikachu.svg';
 import LeftArrow from 'assets/svg/left-arrow.svg';
 import {PokemonItemCard} from 'components/pokemon/itemcard';
 import {Pokeball} from 'components/pokemon/Pokeball';
-import Search from 'assets/svg/search.svg';
-import TouchableInput from 'components/input/touchable-input';
 import GhostButton from 'components/button/ghost';
 import SearchInput from 'components/input/search-input';
 import {useNavigation} from '@react-navigation/native';
-import {useDebounce} from 'core/util/utils';
 
 export const SearchPokemon = () => {
   const {goBack} = useNavigation();
@@ -60,11 +57,7 @@ export const SearchPokemon = () => {
             <LeftArrow width={30} height={30} />
           </GhostButton>
 
-          <SearchInput
-            value={query}
-            onChangeText={handleSearch}
-            className="flex-1"
-          />
+          <SearchInput onDebounceText={handleSearch} className="flex-1" />
           <Pokeball size={150} position={-50} />
         </View>
 
@@ -97,7 +90,7 @@ export const SearchPokemon = () => {
               fetchNextPage();
             }
           }}
-          onEndReachedThreshold={0.1}
+          onEndReachedThreshold={0.4}
           ListFooterComponent={isFetching ? <Activity /> : null}
           removeClippedSubviews
           numColumns={2}
