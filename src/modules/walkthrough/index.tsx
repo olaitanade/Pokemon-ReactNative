@@ -4,9 +4,7 @@ import * as React from 'react';
 import {
   Pressable,
   StatusBar,
-  Image,
   Dimensions,
-  FlatList,
   Text,
   View,
   StyleSheet,
@@ -26,6 +24,7 @@ import {getRandomInt} from 'core/util/utils';
 import ImageBackground from './components/imagebackground';
 import assets from 'assets/index';
 import {useStore} from 'core/state/store';
+import Pagination from './components/pagination';
 faker.seed(10);
 
 const AnimatedFlatList = Animated.FlatList;
@@ -137,43 +136,6 @@ const Item = ({item, index}) => {
       height={height}
       type={item.type}
     />
-  );
-};
-
-const PaginationDot = ({scrollY, index}) => {
-  const stylez = useAnimatedStyle(() => {
-    return {
-      height: interpolate(
-        scrollY.value,
-        [index - 1, index, index + 1],
-        [_indicatorSize, _indicatorSize * 6, _indicatorSize],
-        Extrapolate.CLAMP,
-      ),
-    };
-  });
-  return (
-    <Animated.View
-      style={[
-        {
-          width: _indicatorSize,
-          height: _indicatorSize,
-          borderRadius: _indicatorSize / 2,
-          backgroundColor: 'white',
-          marginBottom: _indicatorSize / 2,
-        },
-        stylez,
-      ]}
-    />
-  );
-};
-
-const Pagination = ({scrollY, data}) => {
-  return (
-    <View style={{position: 'absolute', left: _spacing}}>
-      {data.map((_, index) => {
-        return <PaginationDot index={index} scrollY={scrollY} />;
-      })}
-    </View>
   );
 };
 

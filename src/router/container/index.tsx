@@ -9,7 +9,9 @@ import Bootloader from 'modules/bootloader';
 import {useStore} from 'core/state/store';
 import Walkthrough from 'modules/walkthrough';
 import {Pokemons} from 'modules/pokemons';
-import { SearchPokemon } from 'modules/searchpokemon';
+import {SearchPokemon} from 'modules/searchpokemon';
+import {Host} from 'react-native-portalize';
+import { PokemonDetail } from 'modules/pokemon';
 
 const BootloaderStackFactory = createNativeStackNavigator();
 const WalkThroughStackFactory = createNativeStackNavigator();
@@ -59,7 +61,7 @@ const AppStack = () => {
     <AppContainerStackFactory.Navigator>
       {createRoute(routes.pokemons, Pokemons)}
       {createRoute(routes.searchpokemon, SearchPokemon)}
-      {createRoute(routes.pokemondetail, Bootloader)}
+      {createRoute(routes.pokemondetail, PokemonDetail)}
     </AppContainerStackFactory.Navigator>
   );
 };
@@ -118,7 +120,9 @@ const Container = () => {
       onReady={() => {
         navigation.setIsReady(true);
       }}>
-      <ContainerStack />
+      <Host>
+        <ContainerStack />
+      </Host>
     </NavigationContainer>
   );
 };

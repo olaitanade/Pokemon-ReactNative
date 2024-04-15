@@ -32,6 +32,9 @@ const BaseInput = (
         })
       }
       value={typeof value === 'number' ? (value as any).toString() : value}
+      autoCapitalize="none"
+      autoCorrect={false}
+      autoComplete="off"
       {...rest}
     />
   );
