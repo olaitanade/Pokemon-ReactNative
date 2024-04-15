@@ -3,8 +3,9 @@ import RNConfig from 'react-native-config';
 const config = {
   environment: RNConfig.ENV,
   api: {
-    base: RNConfig.BASE_URL,
-    artwork: RNConfig.POKEMON_SPRITE,
+    base: 'https://pokeapi.co/api/v2/',
+    artwork:
+      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/',
     version: 'v1',
     pageSize: 50,
   },

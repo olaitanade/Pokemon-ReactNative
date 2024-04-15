@@ -1,16 +1,16 @@
 import React, {useContext} from 'react';
-import {View, StyleSheet} from 'react-native';
+import {View} from 'react-native';
 
-import {Stat} from './Stat';
+import {Stat} from '../../../components/pokemon/Stat';
 import {Store} from 'core/state/store';
 
-export const StatsTab = () => {
+export const Stats = () => {
   const {state} = useContext(Store);
   const stats = state.pokemon.stats;
   const total = stats.reduce((prev, curr) => prev + curr.base_stat, 0) || 0;
 
   return (
-    <View style={styles.container}>
+    <View className="py-20">
       {stats.map(({stat, base_stat}) => (
         <Stat
           key={stat.name}
@@ -23,9 +23,3 @@ export const StatsTab = () => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    paddingVertical: 25,
-  },
-});

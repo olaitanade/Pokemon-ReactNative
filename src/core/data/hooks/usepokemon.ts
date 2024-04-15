@@ -24,7 +24,7 @@ export const usePokemon = (id: string) => {
   });
 
   const {dispatch} = useContext(Store);
-  const [status, setStatus] = useState<RequestStatus>('idle');
+  const [status, setStatus] = useState<RequestStatus>('loading');
   const [pokemon, setPokemon] = useState<Pokemon | null>(null);
 
   useEffect(() => {
@@ -40,10 +40,6 @@ export const usePokemon = (id: string) => {
       dispatch({type: 'SET_STATS', payload: aboutData.data.stats});
       dispatch({type: 'SET_EVOLUTION', payload: evolutionChainData.data});
       dispatch({type: 'SET_MOVES', payload: aboutData.data.moves});
-
-      console.log('aboutData', aboutData.data);
-      console.log('speciesData', speciesData.data);
-      console.log('evolutionChainData', evolutionChainData.data);
 
       setPokemon(aboutData.data);
       setStatus('success');

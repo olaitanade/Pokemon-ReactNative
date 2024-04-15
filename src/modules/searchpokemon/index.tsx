@@ -2,7 +2,7 @@ import {FlashList} from '@shopify/flash-list';
 import Activity from 'components/activity';
 import {usePokemons} from 'core/data/hooks/usepokemons';
 import React, {useState} from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {Text, View} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import Pikachu from 'assets/svg/pikachu.svg';
 import LeftArrow from 'assets/svg/left-arrow.svg';
@@ -11,13 +11,13 @@ import {Pokeball} from 'components/pokemon/Pokeball';
 import GhostButton from 'components/button/ghost';
 import SearchInput from 'components/input/search-input';
 import {useNavigation} from '@react-navigation/native';
+import {mapToCustom} from 'core/util/utils';
 
 export const SearchPokemon = () => {
   const {goBack} = useNavigation();
   const [query, setQuery] = useState('');
   const {
     data,
-    error,
     fetchNextPage,
     hasNextPage,
     isFetching,
@@ -40,11 +40,11 @@ export const SearchPokemon = () => {
 
   if (status === 'error') {
     return (
-      <View style={styles.withoutResults}>
-        <Text style={styles.withoutResultText}>
+      <View className="flex-1 justify-center items-center bg-red-100">
+        <Text className=" text-center mb-20 text-white font-bold w-[80%]">
           At this time there are no pokemons available.
         </Text>
-        <Pikachu width={200} height={200} style={styles.withoutResultImg} />
+        <Pikachu width={200} height={200} />
       </View>
     );
   }
@@ -64,15 +64,7 @@ export const SearchPokemon = () => {
         <FlashList
           data={
             data?.pages
-              .map(page =>
-                page.data.results.map(({name, url}) => {
-                  const urlSplit = url.split('/');
-                  const id = urlSplit[urlSplit.length - 2];
-                  const picture = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`;
-
-                  return {id, picture, name};
-                }),
-              )
+              .map(page => page.data.results.map(mapToCustom))
               .flat()
               .filter((item: PokemonCustom) => {
                 if (query) {
@@ -99,31 +91,3 @@ export const SearchPokemon = () => {
     </SafeAreaView>
   );
 };
-
-const styles = StyleSheet.create({
-  title: {
-    fontSize: 35,
-    fontWeight: 'bold',
-    marginLeft: 20,
-    color: '#fff',
-  },
-  withoutResults: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'red',
-  },
-  withoutResultText: {
-    fontSize: 25,
-    width: '80%',
-    color: '#fff',
-    fontWeight: 'bold',
-    textAlign: 'center',
-    marginBottom: 20,
-  },
-  withoutResultImg: {
-    width: 150,
-    height: 150,
-    opacity: 0.9,
-  },
-});

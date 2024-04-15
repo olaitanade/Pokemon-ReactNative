@@ -1,5 +1,6 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable react-native/no-inline-styles */
-import {Image, View} from 'react-native';
+import {Image, ImageSourcePropType, View} from 'react-native';
 import React, {useCallback, useEffect, useState} from 'react';
 import screen from 'core/util/screen';
 import {Pokeball} from 'components/pokemon/Pokeball';
@@ -10,7 +11,7 @@ import cx from 'classnames';
 const DEFAULT_COLOR = '#fff';
 
 type ImageBackgroundProps = {
-  imageUri: string;
+  imageUri: string | ImageSourcePropType;
   width?: number;
   height?: number;
   type?: 'remote' | 'local';
@@ -26,7 +27,7 @@ const ImageBackground = ({
 
   const getPictureColors = useCallback(async () => {
     const [primary = DEFAULT_COLOR, secondary = DEFAULT_COLOR] =
-      await getImageColors(imageUri);
+      await getImageColors(imageUri as string);
     setBackground(secondary);
   }, [imageUri]);
 
@@ -38,12 +39,17 @@ const ImageBackground = ({
     <View
       style={{backgroundColor: background, opacity: 0.85}}
       className={cx('flex-1 items-center justify-center relative')}>
-      {type === 'local' && <Image source={imageUri} style={{width, height}} />}
+      {type === 'local' && (
+        <Image
+          source={imageUri as ImageSourcePropType}
+          style={{width, height}}
+        />
+      )}
       {type === 'remote' && (
         <FastImage
           style={{width, height}}
           source={{
-            uri: imageUri,
+            uri: imageUri as string,
             priority: FastImage.priority.normal,
           }}
           resizeMode={FastImage.resizeMode.contain}
@@ -51,7 +57,6 @@ const ImageBackground = ({
       )}
 
       <View
-        // eslint-disable-next-line react-native/no-inline-styles
         style={{
           position: 'absolute',
           width: screen.getSizeScale(100),

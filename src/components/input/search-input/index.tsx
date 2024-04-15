@@ -35,6 +35,7 @@ const SearchInput: FC<SearchInputProps> = ({
       style={[style]}>
       <Search width={20} height={20} />
       <Input
+        autoFocus={true}
         value={query}
         onChangeText={setQuery}
         placeholder={placeholder}

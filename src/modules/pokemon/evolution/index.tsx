@@ -1,9 +1,10 @@
 import React from 'react';
 import {ScrollView} from 'react-native';
-import { NoDetailsFound } from './NoDetailsFound';
-import { EvolutionGroup } from './EvolutionGroup';
+import {useEvolution} from 'core/data/hooks/useEvolution';
+import {NoDetailsFound} from 'components/pokemon/NoDetailsFound';
+import {EvolutionGroup} from 'components/pokemon/EvolutionGroup';
 
-export const EvolutionTab = () => {
+export const Evolution = () => {
   const {evolutions} = useEvolution();
 
   const hasNoEvolutions = evolutions.length <= 1;

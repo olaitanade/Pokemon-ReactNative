@@ -1,6 +1,7 @@
 import React from 'react';
 import {Image, StyleSheet, Text, View} from 'react-native';
-import RightArrowIcon from '../../assets/right-arrow.svg';
+import RightArrowBlackIcon from 'assets/svg/right-arrow-black.svg';
+import assets from 'assets/index';
 
 type Props = {
   evolutions: EvolutionProps[];
@@ -16,7 +17,7 @@ export const EvolutionGroup = ({evolutions, positions}: Props) => {
       />
 
       <View style={styles.level}>
-        <RightArrowIcon width={30} height={30} />
+        <RightArrowBlackIcon width={30} height={30} />
         <Text style={styles.levelText}>
           Level {evolutions[positions[1]].level}
         </Text>
@@ -34,10 +35,7 @@ const Evolution = ({picture, name}: EvolutionProps) => {
   return (
     <View>
       <View style={styles.wrapperPicture}>
-        <Image
-          style={styles.pokeball}
-          source={require('../../assets/pokeball.png')}
-        />
+        <Image style={styles.pokeball} source={assets.images.pokeball} />
         {picture && <Image source={{uri: picture}} style={styles.picture} />}
       </View>
       <Text style={styles.name}>{name}</Text>

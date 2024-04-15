@@ -11,7 +11,7 @@ export type EvolutionProps = {
 export const useEvolution = () => {
   const [evolutions, setEvolutions] = useState<EvolutionProps[]>([]);
   const {state} = useContext(Store);
-  const {pokemons, pokemon} = state;
+  const {pokemon} = state;
 
   const getEvolutions = () => {
     let evolutionChain = pokemon.evolution?.chain;
@@ -20,13 +20,14 @@ export const useEvolution = () => {
       if (evolutionChain) {
         const details = evolutionChain['evolution_details'][0];
 
+        const urlSplit = evolutionChain.species?.url?.split('/');
+        const id = urlSplit[urlSplit.length - 2];
+        const picture = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`;
+
         let evolution: EvolutionProps = {
           name: evolutionChain.species.name,
           level: !details?.min_level ? '' : details.min_level.toString(),
-          picture: pokemons.length
-            ? pokemons.filter(x => x.name === evolutionChain?.species.name)[0]
-                ?.picture
-            : null,
+          picture: picture,
         };
 
         setEvolutions(prevState => [...prevState, evolution]);

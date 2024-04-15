@@ -72,6 +72,7 @@ const ModalBase: FC<ModalBaseProps> = ({
         closeOnOverlayTap
         onClosed={onRequestClose}
         HeaderComponent={<ModalHandle />}
+        disableScrollIfPossible={false}
         // eslint-disable-next-line react-native/no-inline-styles
         modalStyle={[{backgroundColor: 'white'}, modalStyle]}
         customRenderer={customRendererFn()}

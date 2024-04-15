@@ -4,7 +4,7 @@ import colors from 'theme/data/colors.json';
 
 const textStyles: any = StyleSheet.create({
   common: {
-    color: colors.gray['100'],
+    color: colors.black['100'],
   },
 
   tab: {
@@ -70,42 +70,9 @@ const textStyles: any = StyleSheet.create({
     letterSpacing: Platform.select({android: screen.getFontSize(0.3)}),
   },
 
-  headline: {
-    fontSize: screen.getFontSize(18),
-    lineHeight: screen.getFontSize(23),
-    letterSpacing: Platform.select({android: screen.getFontSize(0.35)}),
-  },
-
-  headingthree: {
-    fontSize: screen.getFontSize(20),
-    lineHeight: screen.getFontSize(25),
-  },
-
-  headingtwo: {
-    fontSize: screen.getFontSize(22),
-    lineHeight: screen.getFontSize(28),
-  },
-
-  headingone: {
-    fontSize: screen.getFontSize(24),
-    lineHeight: screen.getFontSize(30),
-  },
-
   title: {
     fontSize: screen.getFontSize(28),
     lineHeight: screen.getFontSize(34),
-  },
-
-  largetitle: {
-    fontSize: screen.getFontSize(30),
-    lineHeight: screen.getFontSize(37),
-    letterSpacing: Platform.select({android: screen.getFontSize(0.35)}),
-  },
-
-  hugetitle: {
-    fontSize: screen.getFontSize(64),
-    lineHeight: screen.getFontSize(72),
-    letterSpacing: Platform.select({android: screen.getFontSize(0.35)}),
   },
 
   input: {

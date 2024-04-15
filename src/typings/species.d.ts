@@ -16,6 +16,7 @@ type Species = {
   has_gender_differences: boolean;
   hatch_counter: number;
   id: number;
+  url: string;
   is_baby: boolean;
   is_legendary: boolean;
   is_mythical: boolean;

@@ -2,10 +2,15 @@ import React, {useCallback} from 'react';
 import {View, StyleSheet, TouchableOpacity, Text, Image} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 
-import DotsIcon from '../../assets/dots.svg';
-import LeftArrowWhite from 'assets/left-arrow-white.svg';
-import FavoriteIcon from '../../assets/favorite.svg';
-import {Pokeball} from './Pokeball';
+import DotsIcon from 'assets/svg/dots.svg';
+import LeftArrowWhite from 'assets/svg/left-arrow-white.svg';
+import Animated, {
+  useSharedValue,
+  useAnimatedStyle,
+  withRepeat,
+  withTiming,
+  Easing,
+} from 'react-native-reanimated';
 
 type Props = {
   backgroundColor: string;
@@ -22,6 +27,23 @@ export const Header = ({backgroundColor, picture, name, id, types}: Props) => {
     return id.padStart(3, '0');
   }, []);
 
+  const offset = useSharedValue(0);
+
+  // Animated styles
+  const animatedStyles = useAnimatedStyle(() => {
+    return {
+      transform: [{translateY: offset.value}],
+    };
+  });
+
+  React.useEffect(() => {
+    offset.value = withRepeat(
+      withTiming(10, {duration: 1000, easing: Easing.inOut(Easing.ease)}),
+      -1,
+      true,
+    );
+  }, []);
+
   return (
     <View style={{...styles.container, backgroundColor}}>
       <DotsIcon style={styles.dotsIcon} />
@@ -31,15 +53,10 @@ export const Header = ({backgroundColor, picture, name, id, types}: Props) => {
         <TouchableOpacity style={{width: 30, height: 30}} onPress={goBack}>
           <LeftArrowWhite width={30} height={30} />
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => {}}>
-          <FavoriteIcon width={30} height={30} />
-        </TouchableOpacity>
       </View>
-
-      <View style={styles.wrapPicture}>
-        <Pokeball size={280} position={40} />
+      <Animated.View style={[styles.wrapPicture, animatedStyles]}>
         <Image source={{uri: picture}} style={styles.picture} />
-      </View>
+      </Animated.View>
 
       <View style={styles.wrapText}>
         <Text style={styles.title}>{name}</Text>
@@ -60,10 +77,17 @@ export const Header = ({backgroundColor, picture, name, id, types}: Props) => {
 };
 
 const styles = StyleSheet.create({
+  box: {
+    width: 100,
+    height: 100,
+    backgroundColor: 'tomato',
+    margin: 30,
+  },
   container: {
     width: '100%',
-    height: 430,
+    height: 425,
     position: 'relative',
+    zIndex: 10,
   },
   dotsIcon: {
     position: 'absolute',
@@ -78,6 +102,7 @@ const styles = StyleSheet.create({
     left: -50,
     width: 150,
     height: 150,
+    borderRadius: 50,
     transform: [{rotate: '60deg'}],
     backgroundColor: 'rgba(255,255,255,.15)',
   },

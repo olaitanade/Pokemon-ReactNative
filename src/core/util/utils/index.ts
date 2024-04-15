@@ -1,14 +1,6 @@
 import {Platform} from 'react-native';
 import {useRef} from 'react';
-import Config from 'react-native-config';
-
-export const BASE_URL = Config.BASE_URL;
-
-export function exponentialBackoff(retryNumber = 0): number {
-  const delay = Math.pow(2, retryNumber) * 100;
-  const randomSum = delay * 0.2 * Math.random();
-  return delay + randomSum;
-}
+import config from 'core/config';
 
 export function sleep(timeInMs: number = 0) {
   return new Promise(resolve => setTimeout(resolve, timeInMs));
@@ -18,7 +10,7 @@ export function notNil<T>(value?: T | null): value is T {
   return typeof value !== 'undefined' && value !== null;
 }
 
-export function getRandomInt(min, max): number {
+export function getRandomInt(min: number, max: number): number {
   min = Math.ceil(min);
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -59,7 +51,7 @@ export function rateLimit(fn: Fn, times = 1, delta = Infinity) {
   };
 }
 
-const BOUNCE_RATE = 2000;
+const BOUNCE_RATE = 500;
 
 export const useDebounce = () => {
   const busy = useRef(false);
@@ -95,8 +87,15 @@ export const mapToAbout = (pokemon: Pokemon, species: Species): About => {
   };
 };
 
+export const mapToCustom = ({name, url}: {name: string; url: string}) => {
+  const urlSplit = url.split('/');
+  const id = urlSplit[urlSplit.length - 2];
+  const picture = `${config.api.artwork}${id}.png`;
+
+  return {id, picture, name};
+};
+
 export default {
-  exponentialBackoff,
   sleep,
   nil,
   notNil,

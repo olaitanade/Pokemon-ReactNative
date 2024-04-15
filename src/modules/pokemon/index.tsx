@@ -4,8 +4,9 @@ import {usePokemon} from 'core/data/hooks/usepokemon';
 import {NoDetailsFound} from 'components/pokemon/NoDetailsFound';
 import {Header} from 'components/pokemon/Header';
 import Activity from 'components/activity';
+import {Detail} from 'modules/pokemon/detail';
 
-export const PokemonScreen = ({route}: Props) => {
+export const PokemonDetail = ({route}: Props) => {
   const {pokemonItem, color} = route.params;
   const {pokemon, status} = usePokemon(pokemonItem.id);
 
@@ -23,6 +24,7 @@ export const PokemonScreen = ({route}: Props) => {
         {status === 'error' && (
           <NoDetailsFound message="No details found for this pokemon." />
         )}
+        {status === 'success' && <Detail />}
       </View>
     </>
   );
@@ -33,6 +35,6 @@ const styles = StyleSheet.create({
     width: '100%',
     flex: 1,
     paddingHorizontal: 20,
-    paddingTop: 10,
+    backgroundColor: '#fff',
   },
 });

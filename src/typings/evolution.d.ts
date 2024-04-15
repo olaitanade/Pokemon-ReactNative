@@ -40,7 +40,7 @@ type SpeciesOption = {
 
 type EvolutionChain = {
   url: string;
-}
+};
 
 type EvolutionProps = {
   name: string;

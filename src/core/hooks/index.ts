@@ -14,6 +14,8 @@ import {
   useNavigationState,
   useRoute,
 } from '@react-navigation/native';
+import config from 'core/config';
+import { sleep } from 'core/util/utils';
 
 export function useRouter() {
   const navigation = useNavigation<any>();
@@ -109,4 +111,38 @@ export function useAutofocus(
 export function useRouteParams<T extends object>() {
   const route = useRoute();
   return (route.params ?? {}) as T;
+}
+
+export function useModalUtils(
+  initialOpen: boolean = false,
+  animationDuration = config.modalize.duration,
+): ModalActions {
+  const [visible, setVisible] = useState(initialOpen);
+
+  const handleOpen = useCallback(() => {
+    Keyboard.dismiss();
+    setVisible(true);
+  }, []);
+
+  const handleClose = useCallback(async () => {
+    setVisible(false);
+    await sleep(animationDuration);
+    return Promise.resolve();
+  }, [animationDuration]);
+
+  const handleToggle = useCallback(() => {
+    setVisible(o => !o);
+  }, []);
+
+  const actions: ModalActions = useMemo(
+    () => ({
+      visible,
+      open: handleOpen,
+      close: handleClose,
+      toggle: handleToggle,
+    }),
+    [handleClose, handleOpen, handleToggle, visible],
+  );
+
+  return actions;
 }
