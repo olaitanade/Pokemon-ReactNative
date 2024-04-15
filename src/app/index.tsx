@@ -4,7 +4,13 @@ import Container from 'router/container';
 import {QueryClient, QueryClientProvider} from '@tanstack/react-query';
 import {StateProvider} from 'core/state/store';
 
-const queryClient = new QueryClient({});
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: Infinity,
+    },
+  },
+});
 
 const App = () => {
   return (

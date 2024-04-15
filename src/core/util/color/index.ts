@@ -9,12 +9,12 @@ export const getImageColors = async (uri: string) => {
 
   switch (colors.platform) {
     case 'android':
-      primary = colors.dominant;
-      secondary = colors.darkMuted;
+      primary = colors.darkMuted;
+      secondary = colors.dominant;
       break;
     case 'ios':
       primary = colors.primary;
-      secondary = colors.secondary;
+      secondary = colors.background;
       break;
     default:
       throw new Error('Unexpected platform');
