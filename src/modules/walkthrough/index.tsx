@@ -25,7 +25,7 @@ import {faker} from '@faker-js/faker';
 import {getRandomInt} from 'core/util/utils';
 import ImageBackground from './components/imagebackground';
 import assets from 'assets/index';
-import { useStore } from 'core/state/store';
+import {useStore} from 'core/state/store';
 faker.seed(10);
 
 const AnimatedFlatList = Animated.FlatList;
@@ -178,7 +178,7 @@ const Pagination = ({scrollY, data}) => {
 };
 
 export default function Walkthrough() {
-    const {dispatch} = useStore();
+  const {dispatch} = useStore();
   const scrollY = useSharedValue(0);
   const onScroll = useAnimatedScrollHandler({
     onScroll: ev => {
@@ -203,7 +203,7 @@ export default function Walkthrough() {
       <DetailsWrapper scrollY={scrollY} data={_data} />
       <Pressable
         onPress={() => {
-            dispatch({type: 'SET_INITIALROUTE', payload: 'App'});
+          dispatch({type: 'SET_INITIALROUTE', payload: 'App'});
         }}
         style={{
           position: 'absolute',

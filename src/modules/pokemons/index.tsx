@@ -8,6 +8,7 @@ import Pikachu from 'assets/svg/pikachu.svg';
 import LeftArrow from 'assets/svg/left-arrow.svg';
 import {PokemonItemCard} from 'components/pokemon/itemcard';
 import {Pokeball} from 'components/pokemon/Pokeball';
+import Search from 'assets/svg/search.svg';
 
 export const Pokemons = () => {
   const {
@@ -47,8 +48,9 @@ export const Pokemons = () => {
           <Text style={styles.title}>Pokemons</Text>
           <Pokeball size={150} position={-50} />
         </View>
-        <View className=' my-10'>
-
+        <View className="m-20 flex-row rounded-md border border-gray-500 py-10 px-10">
+          <Search width={30} height={30} />
+          <Text className="text-lg ml-12">Search</Text>
         </View>
         <FlashList
           data={
