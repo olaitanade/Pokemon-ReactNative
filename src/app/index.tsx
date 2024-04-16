@@ -5,6 +5,7 @@ import {QueryClient, QueryClientProvider} from '@tanstack/react-query';
 import {StateProvider} from 'core/state/store';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
 
+//setup react-query client
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -13,6 +14,7 @@ const queryClient = new QueryClient({
   },
 });
 
+//wrap the app with the necessary providers - QueryClientProvider, StateProvider, SafeAreaProvider, GestureHandlerRootView
 const App = () => {
   return (
     <QueryClientProvider client={queryClient}>

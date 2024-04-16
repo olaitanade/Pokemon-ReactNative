@@ -16,7 +16,7 @@ After setup complete ,run `yarn install` to build the dependencies the project n
 
 1. App: Main entry point
 2. Assets: App resources
-3. Components: Shared components amongst the modules
+3. Components: Shared components amongst the modules. I used Tailwind setup with NativeWind.
 4. Modules: A module is a screen with data and business logic to build features/components
 5. Router: Navigation controller
 6. Core: From the bootloader, config, data, hooks, state, strings, util and vault. The business logic required to run the app, using react-query for data, react-context for state and async-storage.
