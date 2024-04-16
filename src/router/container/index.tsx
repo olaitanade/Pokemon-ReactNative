@@ -13,11 +13,13 @@ import {SearchPokemon} from 'modules/searchpokemon';
 import {Host} from 'react-native-portalize';
 import {PokemonDetail} from 'modules/pokemon';
 
+//breat the app into different stacks - Bootloader, Walkthrough, App, Container
 const BootloaderStackFactory = createNativeStackNavigator();
 const WalkThroughStackFactory = createNativeStackNavigator();
 const AppContainerStackFactory = createNativeStackNavigator();
 const ContainerStackFactory = createNativeStackNavigator();
 
+//create the BootloaderStack/SplashScreenStack
 const BootloaderStack = () => {
   return (
     <BootloaderStackFactory.Navigator>
@@ -30,6 +32,7 @@ const BootloaderStack = () => {
   );
 };
 
+//create the WalkThroughStack/OnboardingStack
 const WalkThroughStack = () => {
   return (
     <WalkThroughStackFactory.Navigator>
@@ -42,6 +45,7 @@ const WalkThroughStack = () => {
   );
 };
 
+//create the AppStack
 const AppStack = () => {
   const options = useRef({headerShown: false}).current;
 
@@ -66,7 +70,9 @@ const AppStack = () => {
   );
 };
 
+//create the ContainerStack - this is the main stack that will be rendered
 const ContainerStack = () => {
+  //get the state from the store, initial route to switch between Bootloader, Walkthrough, App
   const {state} = useStore();
   const options = useRef({
     headerShown: false,
@@ -98,9 +104,10 @@ const ContainerStack = () => {
   );
 };
 
+//Container component
+//add a listener to the navigation container to set the isReady state and ref to the navigation container
 const Container = () => {
   useEffect(() => {
-    //initBackgroundFetch();
     return () => {
       navigation.setIsReady(false);
       bootloader.shutdown();

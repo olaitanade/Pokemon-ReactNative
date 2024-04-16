@@ -35,7 +35,6 @@ const AnimatedFlatList = Animated.FlatList;
 const _indicatorSize = 4;
 const _spacing = 14;
 const _buttonSize = 64;
-//https://unsplash.com/photos/a-pile-of-pokemon-trading-cards-sitting-on-top-of-each-other-DLeImMwOVyc
 
 const _data: WalkThroughData[] = [
   {

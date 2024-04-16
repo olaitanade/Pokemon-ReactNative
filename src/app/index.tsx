@@ -14,6 +14,7 @@ const queryClient = new QueryClient({
   },
 });
 
+//wrap the app with the necessary providers - QueryClientProvider, StateProvider, SafeAreaProvider, GestureHandlerRootView
 const App = () => {
   return (
     <QueryClientProvider client={queryClient}>

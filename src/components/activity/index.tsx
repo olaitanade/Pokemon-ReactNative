@@ -9,6 +9,7 @@ type ActivityProps = {
   style?: StyleProp<ViewStyle>;
 };
 
+//Pikachu running animation
 const LottieActivity: FC<ActivityProps> = ({style}) => {
   return (
     <LottieView

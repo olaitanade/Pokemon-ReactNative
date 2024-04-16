@@ -12,6 +12,7 @@ type SearchInputProps = {
   style?: StyleProp<ViewStyle>;
 };
 
+//SearchInput component is a reusable component that can be used to search for items in the app
 const SearchInput: FC<SearchInputProps> = ({
   placeholder,
   style,
