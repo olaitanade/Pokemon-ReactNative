@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable react-native/no-inline-styles */
 // Inspiration https://dribbble.com/shots/6293853-UI-Challenge-011-Workout-of-the-Day
 import * as React from 'react';
@@ -15,6 +16,7 @@ import Animated, {
   useAnimatedStyle,
   interpolate,
   useAnimatedScrollHandler,
+  SharedValue,
 } from 'react-native-reanimated';
 import RightArrow from 'assets/svg/right-arrow.svg';
 const {width, height} = Dimensions.get('window');
@@ -25,6 +27,7 @@ import ImageBackground from './components/imagebackground';
 import assets from 'assets/index';
 import {useStore} from 'core/state/store';
 import Pagination from './components/pagination';
+import config from 'core/config';
 faker.seed(10);
 
 const AnimatedFlatList = Animated.FlatList;
@@ -34,7 +37,7 @@ const _spacing = 14;
 const _buttonSize = 64;
 //https://unsplash.com/photos/a-pile-of-pokemon-trading-cards-sitting-on-top-of-each-other-DLeImMwOVyc
 
-const _data = [
+const _data: WalkThroughData[] = [
   {
     key: faker.string.uuid(),
     title: 'Welcome to Pokemon World',
@@ -46,32 +49,31 @@ const _data = [
     key: faker.string.uuid(),
     title: 'Search',
     description: 'Experience the vast collection of Pokemon',
-    image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${getRandomInt(
-      1,
-      500,
-    )}.png`,
+    image: `${config.api.artwork}${getRandomInt(1, 500)}.png`,
   },
   {
     key: faker.string.uuid(),
     title: 'View Details',
     description: 'Indepth details of each Pokemon',
-    image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${getRandomInt(
-      1,
-      500,
-    )}.png`,
+    image: `${config.api.artwork}${getRandomInt(1, 500)}.png`,
   },
   {
     key: faker.string.uuid(),
     title: "Let's Go!",
     description: 'Pokemon Go!',
-    image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${getRandomInt(
-      1,
-      500,
-    )}.png`,
+    image: `${config.api.artwork}${getRandomInt(1, 500)}.png`,
   },
 ];
 
-const Details = ({scrollY, item, index}) => {
+const Details = ({
+  scrollY,
+  item,
+  index,
+}: {
+  scrollY: SharedValue<number>;
+  item: WalkThroughData;
+  index: number;
+}) => {
   const stylez = useAnimatedStyle(() => {
     return {
       opacity: interpolate(
@@ -109,7 +111,13 @@ const Details = ({scrollY, item, index}) => {
     </View>
   );
 };
-const DetailsWrapper = ({scrollY, data}) => {
+const DetailsWrapper = ({
+  scrollY,
+  data,
+}: {
+  scrollY: SharedValue<number>;
+  data: WalkThroughData[];
+}) => {
   return (
     <View
       style={{
@@ -130,7 +138,7 @@ const DetailsWrapper = ({scrollY, data}) => {
   );
 };
 
-const Item = ({item, index}) => {
+const Item = ({item, index}: {item: WalkThroughData; index: number}) => {
   return (
     <ImageBackground
       imageUri={item.image}
@@ -156,7 +164,9 @@ export default function Walkthrough() {
     <View style={styles.container}>
       <AnimatedFlatList
         data={_data}
-        renderItem={props => <Item {...props} />}
+        renderItem={({item, index}) => (
+          <Item item={item as WalkThroughData} index={index} />
+        )}
         onScroll={onScroll}
         scrollEventThrottle={16}
         pagingEnabled
