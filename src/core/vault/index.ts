@@ -1,6 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import keys from './keys';
 
+//async storage utility functions
 export async function getRawAsync(key: string) {
   try {
     const value = await AsyncStorage.getItem(key);

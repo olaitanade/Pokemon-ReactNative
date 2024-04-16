@@ -5,6 +5,8 @@ import {initialWindowMetrics} from 'react-native-safe-area-context';
 
 const SAFE_X = 20;
 
+// utility data related to screen
+// width, height, insets, fontScale, scale, getWidth, getHeight, getFontSize, getSizeScale
 const {width, height, fontScale, scale} = Dimensions.get('window');
 
 const insets = initialWindowMetrics?.insets ?? {
