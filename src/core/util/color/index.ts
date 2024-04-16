@@ -1,5 +1,6 @@
 import ImageColors from 'react-native-image-colors';
 
+// get image colors
 export const getImageColors = async (uri: string) => {
   const colors = await ImageColors.getColors(uri, {
     fallback: '#f44336',

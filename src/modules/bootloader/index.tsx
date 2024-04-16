@@ -17,6 +17,8 @@ const Bootloader = () => {
 
   const {dispatch} = useStore();
 
+  //hide splash screen and boot app
+  //sleep for 2.5 seconds to show splash screen
   useEffect(() => {
     RNBootSplash.hide({fade: true});
     sleep(2500).then(() => bootloader.boot(dispatch));

@@ -29,6 +29,8 @@ export const Detail = () => {
     );
   }
 
+  // Calculate height and weight
+  // reference: https://github.com/DavidBarcenas/react-native-pokedex
   const {feet, cm} = calculateHeight(about.height);
   const {lbs, kg} = calculateweight(about.weight);
   const abilities = about.abilities.map(({ability}) => ability.name).join(', ');
