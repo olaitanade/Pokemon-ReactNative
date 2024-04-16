@@ -11,6 +11,7 @@ async function boot(dispatch: any) {
   const firstTime = (await vault.getAsync(vault.keys.firsttime)) ?? true;
 
   if (firstTime) {
+    //to disable walkthrough after first time, temporarily commented out to allow walkthrough to show
     //await vault.setAsync(vault.keys.firsttime, false);
     dispatch({type: 'SET_INITIALROUTE', payload: 'Walkthrough'});
   }

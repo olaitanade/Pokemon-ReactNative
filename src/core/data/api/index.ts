@@ -2,6 +2,7 @@ import axios, {AxiosInstance} from 'axios';
 import RNConfig from 'react-native-config';
 import {pokemon, pokemonspecies} from './route';
 
+//pokemon api
 let instance: AxiosInstance;
 
 function getInstance() {

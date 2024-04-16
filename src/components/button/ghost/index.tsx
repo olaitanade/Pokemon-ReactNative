@@ -12,6 +12,7 @@ type GhostButtonProps = PropsWithChildren<{
   onPress?: Fn;
 }>;
 
+// GhostButton component, wrapper for Pressable
 const BaseGhostButton: FC<GhostButtonProps> = ({
   disabled,
   readonly,

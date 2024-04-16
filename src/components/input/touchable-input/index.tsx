@@ -15,6 +15,7 @@ type TouchableInputProps = {
   onPress?: Fn;
 };
 
+//touchable input component, a button that looks like an input
 const TouchableInput: FC<TouchableInputProps> = ({
   disabled,
   leftAccessory,

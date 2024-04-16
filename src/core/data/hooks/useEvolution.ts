@@ -1,4 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
+import config from 'core/config';
 import {Store} from 'core/state/store';
 import {useContext, useEffect, useState} from 'react';
 
@@ -8,11 +9,14 @@ export type EvolutionProps = {
   picture: string | null;
 };
 
+//evolution chain hook, reference: https://pokeapi.co/docs/v2#evolution-chains
+//code reference: https://github.com/DavidBarcenas/react-native-pokedex
 export const useEvolution = () => {
   const [evolutions, setEvolutions] = useState<EvolutionProps[]>([]);
   const {state} = useContext(Store);
   const {pokemon} = state;
 
+  //map and transform evolution chain details to EvolutionProps
   const getEvolutions = () => {
     let evolutionChain = pokemon.evolution?.chain;
 
@@ -22,7 +26,7 @@ export const useEvolution = () => {
 
         const urlSplit = evolutionChain.species?.url?.split('/');
         const id = urlSplit[urlSplit.length - 2];
-        const picture = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`;
+        const picture = `${config.api.artwork}${id}.png`;
 
         let evolution: EvolutionProps = {
           name: evolutionChain.species.name,

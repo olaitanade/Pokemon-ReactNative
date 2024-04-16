@@ -17,6 +17,7 @@ import {
 import config from 'core/config';
 import {sleep} from 'core/util/utils';
 
+// use router hoook, not used in this project
 export function useRouter() {
   const navigation = useNavigation<any>();
   const replace = useCallback(
@@ -37,6 +38,7 @@ export function useRouterState() {
   return useNavigationState(o => o);
 }
 
+//use activity, used to show activity indicator
 export function useActivity<T = Record<string, boolean>>(
   initial: T,
 ): [T, (data: Partial<T>) => void] {
@@ -48,6 +50,7 @@ export function useActivity<T = Record<string, boolean>>(
   return [state, setActivity];
 }
 
+//use focus effect, used to focus on a specific element
 export function useFocused<T extends (...args: any[]) => any>(
   callback: T,
   deps?: DependencyList,
@@ -68,6 +71,7 @@ export function useLightStatusBar() {
   });
 }
 
+//use keyboard visible, used to check if keyboard is visible
 export function useKeyboardVisible(): boolean {
   const [keyboardVisible, setKeyboardVisible] = useState(false);
 
@@ -96,6 +100,7 @@ export function useKeyboardVisible(): boolean {
   return keyboardVisible;
 }
 
+//use autofocus, used to focus on a specific element
 export function useAutofocus(
   ref: React.MutableRefObject<TextInput> | React.RefObject<TextInput>,
 ) {
@@ -108,11 +113,13 @@ export function useAutofocus(
   }, [ref]);
 }
 
+//use route params, used to get route parameters. not used in this project
 export function useRouteParams<T extends object>() {
   const route = useRoute();
   return (route.params ?? {}) as T;
 }
 
+//use modal utils, used to open and close modals
 export function useModalUtils(
   initialOpen: boolean = false,
   animationDuration = config.modalize.duration,
