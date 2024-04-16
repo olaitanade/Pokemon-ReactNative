@@ -122,7 +122,9 @@ const DetailsWrapper = ({scrollY, data}) => {
       }}
       pointerEvents="none">
       {data.map((item, index) => {
-        return <Details item={item} index={index} scrollY={scrollY} />;
+        return (
+          <Details key={item.key} item={item} index={index} scrollY={scrollY} />
+        );
       })}
     </View>
   );

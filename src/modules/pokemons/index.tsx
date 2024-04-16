@@ -10,13 +10,12 @@ import {PokemonItemCard} from 'components/pokemon/itemcard';
 import {Pokeball} from 'components/pokemon/Pokeball';
 import Search from 'assets/svg/search.svg';
 import TouchableInput from 'components/input/touchable-input';
-import {useNavigation} from '@react-navigation/native';
 import routes from 'router/routes';
 import Title from 'components/text/title';
 import {mapToCustom} from 'core/util/utils';
+import router from 'router/index';
 
 export const Pokemons = () => {
-  const {navigate} = useNavigation();
   const {
     data,
     fetchNextPage,
@@ -55,7 +54,7 @@ export const Pokemons = () => {
         <View className="flex-row">
           <TouchableInput
             onPress={() => {
-              navigate(routes.searchpokemon);
+              router.navigate(routes.searchpokemon);
             }}
             placeholder="Search"
             leftAccessory={<Search width={20} height={20} />}

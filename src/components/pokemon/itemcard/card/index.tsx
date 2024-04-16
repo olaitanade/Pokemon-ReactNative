@@ -1,4 +1,5 @@
-import { Pokeball } from 'components/pokemon/Pokeball';
+/* eslint-disable react-hooks/exhaustive-deps */
+import {Pokeball} from 'components/pokemon/Pokeball';
 import React, {useCallback} from 'react';
 import {Dimensions, StyleSheet, Text, View} from 'react-native';
 

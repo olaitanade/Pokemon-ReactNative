@@ -15,7 +15,7 @@ import {
   useRoute,
 } from '@react-navigation/native';
 import config from 'core/config';
-import { sleep } from 'core/util/utils';
+import {sleep} from 'core/util/utils';
 
 export function useRouter() {
   const navigation = useNavigation<any>();

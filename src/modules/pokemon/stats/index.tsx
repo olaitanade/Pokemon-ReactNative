@@ -1,7 +1,7 @@
 import React, {useContext} from 'react';
 import {View} from 'react-native';
 
-import {Stat} from '../../../components/pokemon/Stat';
+import {Stat} from '../../../components/pokemon/stat';
 import {Store} from 'core/state/store';
 
 export const Stats = () => {

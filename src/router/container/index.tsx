@@ -11,7 +11,7 @@ import Walkthrough from 'modules/walkthrough';
 import {Pokemons} from 'modules/pokemons';
 import {SearchPokemon} from 'modules/searchpokemon';
 import {Host} from 'react-native-portalize';
-import { PokemonDetail } from 'modules/pokemon';
+import {PokemonDetail} from 'modules/pokemon';
 
 const BootloaderStackFactory = createNativeStackNavigator();
 const WalkThroughStackFactory = createNativeStackNavigator();

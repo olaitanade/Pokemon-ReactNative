@@ -16,3 +16,11 @@ type ModalActions = {
   close: () => Promise<void>;
   toggle: Fn;
 };
+
+type WalkThroughData = {
+  key: string;
+  title?: string;
+  description?: string;
+  image?: string | ImageSourcePropType;
+  type?: 'remote' | 'local';
+};

@@ -1,9 +1,11 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, {useCallback, useEffect, useState} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import {TouchableOpacity, StyleSheet, Image} from 'react-native';
 import {Card} from './card';
 import {getImageColors} from 'core/util/color';
 import routes from 'router/routes';
+import router from 'router/index';
 
 type Props = {
   item: PokemonCustom;
@@ -13,7 +15,6 @@ const DEFAULT_COLOR = '#f5f5f5';
 const ItemCard = ({item}: Props) => {
   const [background, setBackground] = useState(DEFAULT_COLOR);
   const {picture, name, id} = item;
-  const {navigate} = useNavigation();
 
   const getPictureColors = useCallback(async () => {
     const [primary = DEFAULT_COLOR, secondary = DEFAULT_COLOR] =
@@ -33,7 +34,7 @@ const ItemCard = ({item}: Props) => {
     <TouchableOpacity
       activeOpacity={0.9}
       onPress={() =>
-        navigate(routes.pokemondetail, {
+        router.navigate(routes.pokemondetail, {
           pokemonItem: item,
           color: background,
         })
