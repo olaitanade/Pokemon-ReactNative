@@ -39,15 +39,10 @@ function getRouteAttributes() {
   return routeAttributes;
 }
 
-// function getRouteBackgroundColor(routeName: string): Optional<string> {
-//   return routeColors.find(o => o.routes.includes(routeName))?.color;
-// }
-
 export default {
   navigate,
   goBack,
   navigationRef,
   setIsReady,
   getRouteAttributes,
-  //getRouteBackgroundColor,
 };

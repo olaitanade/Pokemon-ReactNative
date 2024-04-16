@@ -1,17 +1,23 @@
 /* eslint-disable react-native/no-inline-styles */
-/* eslint-disable react/react-in-jsx-scope */
 import React from 'react';
 import {View} from 'react-native';
 import Animated, {
   Extrapolate,
   useAnimatedStyle,
   interpolate,
+  SharedValue,
 } from 'react-native-reanimated';
 
 const _indicatorSize = 4;
 const _spacing = 14;
 
-const PaginationDot = ({scrollY, index}) => {
+const PaginationDot = ({
+  scrollY,
+  index,
+}: {
+  scrollY: SharedValue<number>;
+  index: number;
+}) => {
   const stylez = useAnimatedStyle(() => {
     return {
       height: interpolate(
@@ -38,11 +44,17 @@ const PaginationDot = ({scrollY, index}) => {
   );
 };
 
-const Pagination = ({scrollY, data}) => {
+const Pagination = ({
+  scrollY,
+  data,
+}: {
+  scrollY: SharedValue<number>;
+  data: WalkThroughData[];
+}) => {
   return (
     <View style={{position: 'absolute', left: _spacing}}>
-      {data.map((_, index) => {
-        return <PaginationDot index={index} scrollY={scrollY} />;
+      {data.map((i, index) => {
+        return <PaginationDot key={i.key} index={index} scrollY={scrollY} />;
       })}
     </View>
   );

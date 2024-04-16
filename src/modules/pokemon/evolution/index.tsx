@@ -2,7 +2,7 @@ import React from 'react';
 import {ScrollView} from 'react-native';
 import {useEvolution} from 'core/data/hooks/useEvolution';
 import {NoDetailsFound} from 'components/pokemon/NoDetailsFound';
-import {EvolutionGroup} from 'components/pokemon/EvolutionGroup';
+import {EvolutionGroup} from 'components/pokemon/evolutiongroup';
 
 export const Evolution = () => {
   const {evolutions} = useEvolution();
