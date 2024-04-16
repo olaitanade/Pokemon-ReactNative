@@ -33,3 +33,5 @@ Image gotten from [Unsplash](https://unsplash.com/)
 
 Pikachu Lottie animation from [lottiefiles](https://lottiefiles.com/)
 
+Pokemon types came from [Pokenode-ts](https://pokenode-ts.vercel.app/typings/pokemon-typings)
+

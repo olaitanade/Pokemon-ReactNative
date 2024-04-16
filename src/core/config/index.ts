@@ -1,5 +1,6 @@
 import RNConfig from 'react-native-config';
 
+//app configuration
 const config = {
   environment: RNConfig.ENV,
   api: {

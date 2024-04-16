@@ -5,6 +5,8 @@ import {useContext, useEffect, useState} from 'react';
 import {pokemondetail, pokemonevolution, pokemonspecies} from '../services';
 import {mapToAbout} from 'core/util/utils';
 
+//pokemon hook, reference: https://pokeapi.co/docs/v2#pokemon
+//run parrallel and dependent queries to fetch pokemon details with react-query
 export const usePokemon = (id: string) => {
   const {status: aboutStatus, data: aboutData} = useQuery({
     queryKey: ['pokemonAbout', {id}],
